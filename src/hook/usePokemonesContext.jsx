@@ -37,12 +37,12 @@ function PokemonContext({ children }) {
   }, [offset])
 
 
-  // Llamar todos los pokemones
+  // Llamar a todos los pokemones
   const getAllPokemons = async () => {
     const baseURL = 'https://pokeapi.co/api/v2/';
 
 
-    const res = await fetch(`${baseURL}pokemon?limit=1000&offset=0`)
+    const res = await fetch(`${baseURL}pokemon?limit=1279&offset=0`)
     const data = await res.json();
 
     const promises = data.results.map(async pokemon => {

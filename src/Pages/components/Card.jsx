@@ -15,7 +15,7 @@ function Card({ allPokemon }) {
   // 	specialAttack: stats[3].base_stat,
   //  specialDefense:stats[4].base_stat,
   //  speed:stats[5].base_stat,
-  asdasdasd  // }
+  // }
 
   return (
     <div className='pok-cont'>
