@@ -10,7 +10,7 @@ export const getPokemonByName = async ({ params }) => {
 
 export default function PokemonID() {
 	const { data: onePokemon } = useLoaderData()
-	console.log(onePokemon)
+
 	const hp = useRef("")
 	const attack = useRef("")
 	const defensa = useRef("")
@@ -95,7 +95,7 @@ export default function PokemonID() {
 					</div>
 					<div className='stat-group'>
 						<span>Attack</span>
-						<div className='progress-bar'><span ref={Attack} className={`pro-bar ${onePokemon.types[0].type.name}`}></span></div>
+						<div className='progress-bar'><span ref={attack} className={`pro-bar ${onePokemon.types[0].type.name}`}></span></div>
 						<span className='counter-stat'>
 							{onePokemon.stats[1].base_stat}
 						</span>

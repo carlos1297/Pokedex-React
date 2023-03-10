@@ -10,7 +10,7 @@ function Card({ allPokemon }) {
   // 	id: allPokemon.id,
   //  type: allPokemon.types,
   // 	hp: stats[0].base_stat,
-  //   Attack: stats[1].base_stat,
+  //  Attack: stats[1].base_stat,
   //  defensa: stats[2].base_stat,
   // 	specialAttack: stats[3].base_stat,
   //  specialDefense:stats[4].base_stat,
