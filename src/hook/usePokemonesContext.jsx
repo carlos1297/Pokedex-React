@@ -1,4 +1,4 @@
-import { useEffect, createContext, useState, useContext } from "react"
+import { createContext, useContext, useEffect, useState } from 'react'
 
 const Pokemones = createContext()
 
@@ -7,79 +7,53 @@ export function usePokemonesContext() {
   return pokemones
 }
 
-function PokemonContext({ children }) {
-  const [globalPokemons, setGlobalPokemons] = useState([]);
+export default function PokemonContext({ children }) {
+  const [globalPokemons, setGlobalPokemons] = useState([])
 
-  const [offset, setOffset] = useState(0)
-  const [allPokemon, setAllPokemon] = useState([])
-
-  // LLamar a los 20 pokemones
-  const getPokemons40 = async (limit = 20) => {
-
-    let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
-
-    const res = await fetch(url)
-    const data = await res.json()
-
-    const promes = data.results.map(async (poke) => {
-      const res = await fetch(poke.url)
-      const data = await res.json()
-      return data
-    })
-
-    const result = await Promise.all(promes)
-
-    setAllPokemon([...allPokemon, ...result]);
-  };
-
-  useEffect(() => {
-    getPokemons40()
-  }, [offset])
-
-
-  // Llamar a todos los pokemones
   const getAllPokemons = async () => {
-    const baseURL = 'https://pokeapi.co/api/v2/';
-
+    const baseURL = 'https://pokeapi.co/api/v2/'
+    const batchSize = 50
 
     const res = await fetch(`${baseURL}pokemon?limit=1279&offset=0`)
-    const data = await res.json();
+    const data = await res.json()
 
-    const promises = data.results.map(async pokemon => {
-      const res = await fetch(pokemon.url);
-      const data = await res.json();
-      return data;
-    });
-    const results = await Promise.all(promises);
+    const pokedata = []
 
-    setGlobalPokemons(results)
+    for (let i = 0; i < data.results.length; i += batchSize) {
+      const batch = data.results.slice(i, i + batchSize)
+      const promises = batch.map(async (pokemon) => {
+        const res = await fetch(pokemon.url)
+        const data = await res.json()
+        return data
+      })
+      const results = await Promise.all(promises)
+      pokedata.push(
+        ...results.map((Pokemon) => ({
+          img: Pokemon.sprites.other['official-artwork'].front_default,
+          imgSvg: Pokemon.sprites.other.dream_world.front_default,
+          name: Pokemon.name,
+          id: Pokemon.id,
+          types: Pokemon.types,
+          hp: Pokemon.stats[0].base_stat,
+          Attack: Pokemon.stats[1].base_stat,
+          defensa: Pokemon.stats[2].base_stat,
+          specialAttack: Pokemon.stats[3].base_stat,
+          specialDefense: Pokemon.stats[4].base_stat,
+          speed: Pokemon.stats[5].base_stat,
+        }))
+      )
+    }
 
+    setGlobalPokemons(pokedata)
   }
 
   useEffect(() => {
     getAllPokemons()
   }, [])
 
-  // función que llama a 50 pokemones mas  
-  const onClickLoadMore = () => {
-    setOffset(offset + 50);
-  };
-
-
   return (
-    <Pokemones.Provider value={{
-      // todos los poke
-
-      globalPokemons,
-
-      allPokemon,
-
-      onClickLoadMore,
-
-    }}>
+    <Pokemones.Provider value={{ globalPokemons }}>
       {children}
     </Pokemones.Provider>
   )
 }
-
-export default PokemonContext

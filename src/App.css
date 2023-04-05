@@ -36,7 +36,6 @@ body {
   height: 100%;
 }
 
-
 .menu {
   width: 100%;
   padding: 7px;
@@ -81,8 +80,7 @@ body {
   border: none;
 }
 
-@media (max-width:480px) {
-
+@media (max-width: 480px) {
   .logo-img {
     width: 120px;
     margin-left: 3px;
@@ -105,7 +103,6 @@ body {
   margin: 0 auto;
 }
 
-
 .pok-cont {
   display: grid;
   max-width: 900px;
@@ -115,12 +112,13 @@ body {
   gap: 8px;
 }
 
-
 .pok-item {
   margin: 10px;
   padding: 20px;
   background-color: #eeeded;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -128,8 +126,7 @@ body {
   border-radius: 8px;
   text-decoration: none;
 
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .pok-item:disabled {
@@ -177,7 +174,6 @@ body {
   color: #fff;
   text-transform: capitalize;
 }
-
 
 .pokemon-id {
   display: block;
@@ -263,20 +259,16 @@ body {
   background-color: var(--color-dark);
 }
 
-
-
 /*  paguina secundaria información Id */
 .main-pokemon {
   display: flex;
   flex-direction: column;
-
 }
 
 .header-main-pokemon {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .number-pokemon {
@@ -313,7 +305,6 @@ body {
 .container-info-pokemon h1 {
   text-align: right;
   font-size: 40px;
-
 }
 
 .info-pokemon {
@@ -333,7 +324,6 @@ body {
   text-align: center;
   gap: 10px;
   width: 150px;
-
 }
 
 .group-info p {
@@ -389,7 +379,7 @@ body {
   border-radius: 10px;
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
   .stats {
     width: 400px;
   }
@@ -423,13 +413,8 @@ body {
   border: none;
   padding: 15px 40px;
   font-family: inherit;
-  background-color: var(--color-primary);
-  color: #fff;
+  background-color: red;
+  color: #000;
   border-radius: 10px;
   cursor: pointer;
-}
-
-.btn-load-more:hover {
-  background-color: var(--color-primary-hover);
-  color: #000;
 }
