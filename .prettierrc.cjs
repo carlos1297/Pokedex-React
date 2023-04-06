@@ -5,5 +5,6 @@ module.exports = {
   bracketSpacing: true,
   semi: false,
   singleQuote: true,
-  jsxBracketSameLine: false,
+  bracketSameLine: false,
+  trailingComma: none, // "all" para colocar comas al final del arreglo
 }
