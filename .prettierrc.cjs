@@ -6,5 +6,5 @@ module.exports = {
   semi: false,
   singleQuote: true,
   bracketSameLine: false,
-  trailingComma: none, // "all" para colocar comas al final del arreglo
+  trailingComma: 'none' // "all" para colocar comas al final del arreglo
 }
