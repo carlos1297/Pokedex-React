@@ -4,5 +4,6 @@ module.exports = {
   singleQuote: true,
   bracketSpacing: true,
   semi: false,
-  singleQuote: true
+  singleQuote: true,
+  jsxBracketSameLine: false,
 }
