@@ -12,7 +12,7 @@ export default function PokemonContext({ children }) {
 
   const getAllPokemons = async () => {
     const baseURL = 'https://pokeapi.co/api/v2/'
-    const batchSize = 250
+    const batchSize = 500
 
     const res = await fetch(`${baseURL}pokemon?limit=1279&offset=0`)
     const data = await res.json()
