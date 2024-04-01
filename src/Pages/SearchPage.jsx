@@ -17,16 +17,20 @@ export default function SearchPage() {
   return (
     <div className="container">
       <p className="p-search">
-        {filteredPokemons.length === 0 ? (
+        {filteredPokemons === null ? (
           'Cargando'
+        ) : filteredPokemons.length === 0 ? (
+          'El Pokémon que buscas no se ha encontrado.'
         ) : (
           <>
             Se encontraron <span>{filteredPokemons.length}</span> Pokémon:
           </>
         )}
       </p>
-      {filteredPokemons.length === 0 ? (
+      {filteredPokemons === null ? (
         <Loaders />
+      ) : filteredPokemons.length === 0 ? (
+        <p>No se encontraron resultados.</p>
       ) : (
         <Card allPokemon={filteredPokemons} />
       )}
